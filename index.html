@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+
+    <meta charset="UTF-8">
+    <!-- <img src="images/logo2.jpeg" alt="saddad Prime logo2"> -->
+    <title>سداد برايم | Saddad Prime</title>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- زر Admin -->
+<div id="adminButtonContainer">
+    <button id="adminButton">Admin</button>
+</div>
+
+<!-- Admin Box (مخفي افتراضيًا) -->
+<div id="adminBox" class="hidden">
+    <h2>لوحة إدارة سداد برايم</h2>
+    <span id="closeAdminBox" style="cursor:pointer; float:right; font-weight:bold; font-size:18px;">✖</span>
+    <form id="adminPostForm">
+        <label>العنوان بالعربي:</label><br>
+        <input type="text" id="adminTitleAr" required><br><br>
+
+        <label>العنوان بالإنجليزي:</label><br>
+        <input type="text" id="adminTitleEn" required><br><br>
+
+        <label>رابط التواصل:</label><br>
+        <input type="text" id="adminLink" required><br><br>
+
+        <label>اختر صورة:</label><br>
+        <input type="file" id="adminImage" accept="image/*" required><br><br>
+
+        <label>
+            <input type="checkbox" id="adminSpecial"> عرض مميز
+        </label><br><br>
+
+        <button type="submit">إضافة المنشور</button>
+    </form>
+
+    <h3>المنشورات الحالية:</h3>
+    <div id="adminPostsList"></div>
+</div>
+
+
+
+<header class="header">
+    <h1 class="logo">سداد برايم</h1>
+    <p class="subtitle">Saddad Prime</p>
+
+    <div class="lang-switch">
+        <button onclick="setLanguage('ar')">عربي</button>
+        <button onclick="setLanguage('en')">English</button>
+    </div>
+</header>
+
+<nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="offers.html">العروض الخاصة</a>
+    <a href="reviews.html">آراء العملاء</a>
+</nav>
+
+<main id="posts" class="container">
+    <!-- المنشورات هتظهر هنا بعدين -->
+</main>
+
+<!-- JavaScript -->
+<script src="js/script.js"></script>
+</body>
+</html>

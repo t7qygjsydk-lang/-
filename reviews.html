@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>آراء العملاء | Customer Reviews</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>آراء العملاء | Customer Reviews</h1>
+    <div class="lang-switch">
+        <button onclick="setLanguage('ar')">عربي</button>
+        <button onclick="setLanguage('en')">English</button>
+    </div>
+</header>
+
+<nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="offers.html">العروض الخاصة</a>
+    <a href="reviews.html">آراء العملاء</a>
+</nav>
+
+<main class="container">
+    <form id="reviewForm">
+        <label>الاسم:</label><br>
+        <input type="text" id="reviewName" required><br><br>
+
+        <label>رأيك عن الشركة:</label><br>
+        <textarea id="reviewText" rows="4" required></textarea><br><br>
+
+        <button type="submit">إرسال رأي</button>
+    </form>
+
+    <h2>الآراء السابقة:</h2>
+    <div id="reviewsList"></div>
+</main>
+
+<script src="js/script.js"></script>
+<script>
+    const reviewForm = document.getElementById('reviewForm');
+    const reviewsList = document.getElementById('reviewsList');
+
+    // تحميل وعرض الآراء
+    function displayReviews() {
+        reviewsList.innerHTML = '';
+        const reviews = JSON.parse(localStorage.getItem('reviews') || "[]");
+        const lang = localStorage.getItem('language') || 'ar';
+
+        reviews.forEach(r => {
+            const div = document.createElement('div');
+            div.className = 'review';
+            div.innerHTML = `<strong>${r.name}</strong>: ${r.text}`;
+            reviewsList.appendChild(div);
+        });
+    }
+
+    // إضافة رأي جديد
+    reviewForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        const name = document.getElementById('reviewName').value;
+        const text = document.getElementById('reviewText').value;
+
+        const reviews = JSON.parse(localStorage.getItem('reviews') || "[]");
+        reviews.unshift({name, text});
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+
+        reviewForm.reset();
+        displayReviews();
+    });
+
+    window.onload = function() {
+        applyLanguage();
+        displayReviews();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>صفحة الإدارة | Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>لوحة إدارة سداد برايم</h1>
+</header>
+
+<main class="container">
+    <form id="postForm">
+        <label>العنوان بالعربي:</label><br>
+        <input type="text" id="titleAr" required><br><br>
+
+        <label>العنوان بالإنجليزي:</label><br>
+        <input type="text" id="titleEn" required><br><br>
+
+        <label>رابط التواصل (WhatsApp أو غيره):</label><br>
+        <input type="text" id="link" required><br><br>
+
+        <label>اختر صورة:</label><br>
+        <input type="file" id="image" accept="image/*" required><br><br>
+
+        <label>
+            <input type="checkbox" id="special"> عرض مميز
+        </label><br><br>
+
+        <button type="submit">إضافة المنشور</button>
+    </form>
+
+    <div id="message"></div>
+</main>
+
+<script src="js/admin.js"></script>
+
+
+
+
+</body>
+</html>

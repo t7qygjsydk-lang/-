@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>العروض الخاصة | Special Offers</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>العروض الخاصة | Special Offers</h1>
+    <div class="lang-switch">
+        <button onclick="setLanguage('ar')">عربي</button>
+        <button onclick="setLanguage('en')">English</button>
+    </div>
+</header>
+
+<nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="offers.html">العروض الخاصة</a>
+    <a href="reviews.html">آراء العملاء</a>
+</nav>
+
+<main id="offers" class="container">
+    <!-- العروض المميزة هتظهر هنا -->
+</main>
+
+<script src="js/script.js"></script>
+<script>
+    function displaySpecialOffers() {
+        const offersContainer = document.getElementById('offers');
+        offersContainer.innerHTML = '';
+
+        const lang = localStorage.getItem('language') || 'ar';
+        const posts = JSON.parse(localStorage.getItem('posts') || "[]");
+
+        // فلترة العروض المميزة
+        const specialPosts = posts.filter(post => post.special);
+
+        specialPosts.forEach(post => {
+            const postDiv = document.createElement('div');
+            postDiv.className = 'post';
+
+            postDiv.innerHTML = `
+                <img src="${post.image}" alt="Post Image">
+                <h3>${lang === 'ar' ? post.title_ar : post.title_en}</h3>
+                <a href="${post.link}" target="_blank" class="btn-contact">تواصل الآن</a>
+            `;
+
+            offersContainer.appendChild(postDiv);
+        });
+    }
+
+    window.onload = function() {
+        applyLanguage();
+        displaySpecialOffers();
+    }
+</script>
+
+</body>
+</html>
